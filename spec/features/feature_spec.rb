@@ -11,6 +11,6 @@ describe 'Account' do
     account.withdraw(100)
   end
   it 'won\'t let you withdraw more than you have' do
-    expect { account.withdraw(400) }.to raise_error
+    expect { account.withdraw(400) }.to raise_error 'You do not have the funds'
   end
 end
