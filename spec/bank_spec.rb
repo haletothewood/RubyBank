@@ -16,7 +16,13 @@ describe Account do
 
   context '#withdraw' do
     it 'debits a withdrawn amount from the balance' do
-      expect { account.withdraw(500) }.to change { account.balance }.by -500
+      expect { account.withdraw(500) }.to change { account.balance }.by(- 500)
+    end
+
+    it 'doesn\t allow a user to withdraw more than is available' do
+      expect { account.withdraw(2000) }.to raise_error(
+        'You do not have the funds'
+      )
     end
   end
 end
