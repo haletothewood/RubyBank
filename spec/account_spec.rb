@@ -4,7 +4,8 @@ describe Account do
   balance = 1000
   amount = 500
   let(:transaction) { double :transaction, type: nil, balance: nil }
-  let(:account) { Account.new(balance, transaction) }
+  let(:history) { double :history, transactions: [] }
+  let(:account) { Account.new(balance, transaction, history) }
 
   it 'is created with a balance of the amount provided upon creation' do
     expect(account.balance).to eq 1000
@@ -12,6 +13,7 @@ describe Account do
 
   before :each do
     allow(transaction).to receive(:new)
+    allow(history).to receive(:<<)
   end
 
   context '#deposit' do
@@ -23,6 +25,11 @@ describe Account do
     it 'creates a new transaction' do
       expect(transaction).to receive(:new)
       account.deposit(amount)
+    end
+    it 'adds the trasaction to history' do
+      expect { account.deposit(amount) }.to change {
+        history.transactions.length
+      }.by 1
     end
   end
 

@@ -1,14 +1,15 @@
 class Account
   attr_reader :balance
 
-  def initialize(amount, transaction)
+  def initialize(amount, transaction, history)
     @balance = amount
     @transaction = transaction
+    @history = history
   end
 
   def deposit(amount)
     @balance += amount
-    @transaction.new('credit', @balance)
+    @history.transactions << @transaction.new('credit', @balance)
   end
 
   def withdraw(amount)
