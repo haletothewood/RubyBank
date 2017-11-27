@@ -13,7 +13,7 @@ describe Account do
 
   before :each do
     allow(transaction).to receive(:new)
-    allow(history).to receive(:<<)
+    allow(history).to receive(:add_transaction).with(transaction.new)
   end
 
   context '#deposit' do
@@ -27,9 +27,8 @@ describe Account do
       account.deposit(amount)
     end
     it 'adds the transaction to history' do
-      expect { account.deposit(amount) }.to change {
-        history.transactions.length
-      }.by 1
+      expect(history).to receive(:add_transaction)
+      account.deposit(amount)
     end
   end
 
@@ -53,9 +52,8 @@ describe Account do
     end
 
     it 'adds the transaction to history' do
-      expect { account.deposit(amount) }.to change {
-        history.transactions.length
-      }.by 1
+      expect(history).to receive(:add_transaction)
+      account.deposit(amount)
     end
   end
 end
