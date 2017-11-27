@@ -26,7 +26,7 @@ describe Account do
       expect(transaction).to receive(:new)
       account.deposit(amount)
     end
-    it 'adds the trasaction to history' do
+    it 'adds the transaction to history' do
       expect { account.deposit(amount) }.to change {
         history.transactions.length
       }.by 1
@@ -50,6 +50,12 @@ describe Account do
     it 'creates a new transaction' do
       expect(transaction).to receive(:new)
       account.deposit(amount)
+    end
+
+    it 'adds the transaction to history' do
+      expect { account.deposit(amount) }.to change {
+        history.transactions.length
+      }.by 1
     end
   end
 end

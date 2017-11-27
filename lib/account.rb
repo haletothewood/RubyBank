@@ -9,12 +9,18 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    @history.transactions << @transaction.new('credit', @balance)
+    add_transaction(@transaction.new('credit', @balance))
   end
 
   def withdraw(amount)
     @balance -= amount
     raise 'You do not have the funds' if @balance < amount
-    @transaction.new('debit', @balance)
+    add_transaction(@transaction.new('debit', @balance))
+  end
+
+  private
+
+  def add_transaction(transaction)
+    @history.transactions << transaction
   end
 end
