@@ -5,6 +5,7 @@ require 'account'
 require 'transaction'
 require 'history'
 require 'statement'
+require 'atm'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
