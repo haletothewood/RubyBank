@@ -16,4 +16,10 @@ describe ATM do
     expect(statement).to receive(:print_statement)
     atm.show_statement
   end
+
+  it 'allows a user to deposit' do
+    amount = 500
+    expect(account).to receive(:deposit).with(amount)
+    atm.deposit(amount)
+  end
 end
