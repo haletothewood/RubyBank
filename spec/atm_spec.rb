@@ -22,4 +22,10 @@ describe ATM do
     expect(account).to receive(:deposit).with(amount)
     atm.deposit(amount)
   end
+
+  it 'allows a user to withdraw' do
+    amount = 500
+    expect(account).to receive(:withdraw).with(amount)
+    atm.withdraw(amount)
+  end
 end

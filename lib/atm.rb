@@ -10,6 +10,10 @@ class ATM
     @account.deposit(amount)
   end
 
+  def withdraw(amount)
+    @account.withdraw(amount)
+  end
+
   def show_statement
     @statement.print_statement
   end
