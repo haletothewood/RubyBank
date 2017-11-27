@@ -1,5 +1,5 @@
 class Account
-  attr_reader :balance
+  attr_reader :balance, :history
 
   def initialize(amount, transaction, history)
     @balance = amount
@@ -10,11 +10,13 @@ class Account
   def deposit(amount)
     @balance += amount
     @history.add_transaction(@transaction.new('credit', amount, @balance))
+    @balance
   end
 
   def withdraw(amount)
     @balance -= amount
     raise 'You do not have the funds' if @balance < amount
     @history.add_transaction(@transaction.new('debit', amount, @balance))
+    @balance
   end
 end

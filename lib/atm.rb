@@ -15,6 +15,6 @@ class ATM
   end
 
   def show_statement
-    @statement.print_statement
+    @statement.new(@account.history).print_statement
   end
 end

@@ -2,7 +2,7 @@ require 'account'
 
 describe Account do
   balance = 1000
-  amount = 500
+  amount  = 500
   let(:transaction) { double :transaction, type: nil, balance: nil }
   let(:history) { double :history, transactions: [] }
   let(:account) { Account.new(balance, transaction, history) }
