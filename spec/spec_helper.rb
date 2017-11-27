@@ -1,5 +1,8 @@
 require 'simplecov'
 require 'simplecov-console'
+require 'date'
+require 'account'
+require 'transaction'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
