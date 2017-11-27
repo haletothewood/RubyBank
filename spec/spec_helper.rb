@@ -4,6 +4,7 @@ require 'date'
 require 'account'
 require 'transaction'
 require 'history'
+require 'statement'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
