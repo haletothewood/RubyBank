@@ -3,10 +3,15 @@ require 'account'
 describe Account do
   balance = 1000
   amount = 500
-  let(:account) { Account.new(balance) }
+  let(:transaction) { double :transaction, type: nil, balance: nil }
+  let(:account) { Account.new(balance, transaction) }
 
   it 'is created with a balance of the amount provided upon creation' do
     expect(account.balance).to eq 1000
+  end
+
+  before :each do
+    allow(transaction).to receive(:new)
   end
 
   context '#deposit' do
@@ -14,6 +19,10 @@ describe Account do
       expect { account.deposit(amount) }.to change {
         account.balance
       }.by 500
+    end
+    it 'creates a new transaction' do
+      expect(transaction).to receive(:new)
+      account.deposit(amount)
     end
   end
 
@@ -29,6 +38,11 @@ describe Account do
       expect { account.withdraw(invalid_amount) }.to raise_error(
         'You do not have the funds'
       )
+    end
+
+    it 'creates a new transaction' do
+      expect(transaction).to receive(:new)
+      account.deposit(amount)
     end
   end
 end
