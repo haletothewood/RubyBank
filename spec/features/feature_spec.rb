@@ -17,7 +17,7 @@ describe 'My Bank Account' do
   end
   it 'can print a statement' do
     expect { atm.show_statement }.to output(
-      "date || credit || debit || balance\n2017-11-27 || || 300.00 || 300.00\n2017-11-27 || 100.00 || || 200.00\n"
+      "date || credit || debit || balance\n27/11/2017 || || 300.00 || 300.00\n27/11/2017 || 100.00 || || 200.00\n"
     ).to_stdout
   end
 end

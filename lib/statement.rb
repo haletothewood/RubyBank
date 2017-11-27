@@ -6,23 +6,27 @@ class Statement
   end
 
   def print_statement
-    puts "date || credit || debit || balance\n"
+    header
     @history.transactions.each do |transaction|
-      if transaction.type == 'credit'
-        print_debit(transaction)
-      else
-        print_credit(transaction)
-      end
+      transaction.type == 'credit' ? print_debit(transaction) : print_credit(transaction)
     end
   end
 
-  private 
+  private
 
   def print_credit(transaction)
-    puts "#{transaction.date} || #{'%.2f' % transaction.amount} || || #{'%.2f' % transaction.balance}"
+    puts "#{date_format(transaction.date)} || #{'%.2f' % transaction.amount} || || #{'%.2f' % transaction.balance}"
   end
 
   def print_debit(transaction)
-    puts "#{transaction.date} || || #{'%.2f' % transaction.amount} || #{'%.2f' % transaction.balance}"
+    puts "#{date_format(transaction.date)} || || #{'%.2f' % transaction.amount} || #{'%.2f' % transaction.balance}"
+  end
+
+  def date_format(date)
+    date.strftime("%d/%m/%Y")
+  end
+
+  def header
+    puts "date || credit || debit || balance\n"
   end
 end
