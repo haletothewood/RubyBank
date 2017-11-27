@@ -17,7 +17,7 @@ describe Statement do
   context '#print_statement' do
     it 'prints the account information for the user to see' do
       expect { statement.print_statement }.to output(
-        "date || credit || debit || balance\n2017-11-27 || || 500 || 1500\n"
+        "date || credit || debit || balance\n2017-11-27 || 500.00 || || 1500.00\n"
       ).to_stdout
     end
   end
