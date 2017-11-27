@@ -9,8 +9,14 @@ describe Account do
   end
 
   context '#deposit' do
-    it 'adds a deposited amount to the balance' do
+    it 'credits a deposited amount to the balance' do
       expect { account.deposit(500) }.to change { account.balance }.by 500
+    end
+  end
+
+  context '#withdraw' do
+    it 'debits a withdrawn amount from the balance' do
+      expect { account.withdraw(500) }.to change { account.balance }.by -500
     end
   end
 end
