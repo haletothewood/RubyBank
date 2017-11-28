@@ -2,10 +2,10 @@ require 'date'
 
 describe Statement do
   let(:transaction) do
-    double :transaction,  date: Date.today,
-                          type: 'debit',
-                          amount: 500,
-                          balance: 1500
+    double :transaction, date: Date.parse('27-11-2017'),
+                         type: 'debit',
+                         amount: 500,
+                         balance: 1500
   end
   let(:history) { double :history, transactions: [transaction] }
   let(:statement) { Statement.new(history) }

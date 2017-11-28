@@ -3,8 +3,17 @@ require 'history'
 require 'transaction'
 require 'atm'
 require 'statement'
+require 'timecop'
 
 describe 'My Bank Account' do
+  before do
+    Timecop.freeze(Time.local(2017, 11, 27))
+  end
+
+  after do
+    Timecop.return
+  end
+
   atm = ATM.new(Account.new(0, Transaction, History.new), Statement)
   it 'lets you make a deposit' do
     atm.deposit(300)
