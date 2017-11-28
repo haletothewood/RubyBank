@@ -33,15 +33,19 @@ I want to be able to print a statement.
 => true
 [2] pry(main)> require './lib/atm.rb'
 => true
-[3] pry(main)> require './lib/history.rb'
+[3] pry(main)> require './lib/transaction.rb'
 => true
 [4] pry(main)> require './lib/statement.rb'
 => true
-[5] pry(main)> require './lib/transaction.rb'
+[5] pry(main)> require './lib/history.rb'
 => true
 [6] pry(main)> atm = ATM.new(Account.new(0, Transaction, History.new), Statement)
-=> #<ATM:0x007feca49e01b8
- @account=#<Account:0x007feca49e0258 @balance=0, @history=#<History:0x007feca49e02a8 @transactions=[]>, @transaction=Transaction>,
+=> #<ATM:0x007f801fb58eb0
+ @account=
+  #<Account:0x007f801fb59040
+   @balance=0,
+   @history=#<History:0x007f801fb591a8 @transactions=[]>,
+   @transaction=Transaction>,
  @statement=Statement>
 [7] pry(main)> atm.deposit(500)
 => 500
@@ -49,8 +53,8 @@ I want to be able to print a statement.
 => 100
 [9] pry(main)> atm.show_statement
 date || credit || debit || balance
-2017-11-27 || 500 ||  || 500
-2017-11-27 || || 400 || 100
+28/11/2017 || || 500.00 || 500.00
+28/11/2017 || 400.00 || || 100.00
 ```
 
 ## My Approach
